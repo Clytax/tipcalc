@@ -171,7 +171,7 @@ const Tip = () => {
             <input
               className="tip__input__tip__selection-custom"
               placeholder="Custom"
-              value={`${customValue === null ? 'Custom' : customValue}`}
+              value={`${customValue === null ? '' : customValue}`}
               onChange={(e) => handleCustom(e.target.value)}
             />
           </div>
@@ -192,7 +192,9 @@ const Tip = () => {
                 if (e.target.value === '') {
                   setNumberOfPeople(null);
                 } else {
-                  setNumberOfPeople(e.target.value);
+                  if (!isNumber(e.target.value)) {
+                    setNumberOfPeople(e.target.value);
+                  }
                 }
               }}
             />
